@@ -4,6 +4,8 @@ from io import BytesIO
 from PIL import Image
 from fpdf import FPDF
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 x = 1300
 y = 1200
@@ -15,7 +17,8 @@ try:
     chrome_options.add_argument('--disable-logging')
     chrome_options.add_argument("--headless")
     chrome_options.add_argument(F"--window-size={x},{y}")
-    driver = webdriver.Chrome(executable_path="./Driver/chromedriver.exe",
+    s = Service('C:/Users/lea.uroy/TheGreatPDFer/Driver/chromedriver.exe')
+    driver = webdriver.Chrome(service=s,
                               options=chrome_options)
 except:
     exit("Driver Error")
